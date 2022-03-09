@@ -4,13 +4,13 @@ const router = express.Router();
 const Joi = require('joi');
 const multer = require("multer");
 const bcrypt = require("bcrypt");
-
+ 
 var storage =   multer.diskStorage({
   destination: function (req, file, callback) {
-    callback(null, '../../uploads/images');
+    callback(null,  './uploads/images');
   },
   filename: function (req, file, callback) {
-    callback(null, file.fieldname + '-' + Date.now());
+    callback(null, Date.now()+'.'+file.originalname);
   }
 });
 
@@ -18,8 +18,7 @@ function validateUser(user)
 {
     const JoiSchema = Joi.object({
       
-      ImageTitle: Joi.string().required(),
-      ImageLink:Joi.string().required(),     
+      ImageTitle: Joi.string().required(),    
       category: Joi.string().required()
 
     }).options({ abortEarly: false });
@@ -28,8 +27,12 @@ function validateUser(user)
 }
 const upload = multer({ storage : storage});
 
-router.post("/api/image/add", async(req, res, next)=>{
+router.post("/api/image/add",  upload.single('ImageLink'), async(req, res, next)=>{
 
+  //console.log("rewbody", req.body);
+
+const oringnalFileName= Date.now()+'.'+req.file.originalname;
+console.log("filesname", req.file.originalname);
   const response = validateUser(req.body);
   //console.log("errorMessage", response.details);
   //res.json({"response" : response.error});
@@ -39,7 +42,7 @@ if(response.error){
 
   const image = new images({
     ImageTitle: req.body.ImageTitle,
-      ImageLink: req.body.ImageLink,     
+      ImageLink: oringnalFileName,     
       category: req.body.category
   })
 
