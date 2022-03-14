@@ -34,7 +34,6 @@ const addImage =  async(req, res)=>{
       function validateUser(user)
       {
           const JoiSchema = Joi.object({
-            
             ImageTitle: Joi.string().required(),    
             category: Joi.string().required()
       
@@ -58,10 +57,10 @@ const addImage =  async(req, res)=>{
     const saveImage = await images.save();
 
     if(saveImage){
-    res.json({"Message":"Image added sucessfully", "Response":true}).status(404);
+    res.json({"Message":"Image added sucessfully", "Response":true}).status(202);
     }else{
 
-    res.json({"Message":"Imagenot added sucessfully", "Response":false}).status(202);
+    res.json({"Message":"Image not added sucessfully", "Response":false}).status(404);
     }
 
     }

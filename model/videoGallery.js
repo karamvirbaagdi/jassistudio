@@ -4,7 +4,7 @@ const dbConn = require("../db/dbConnect");
 const Video = new mongoose.Schema({
 
     videoTitle:{type:String, required:true},
-    videoLink:{type:String, required:true},
+    videoLink:{type:String, optional:true},
     videoCategory:{type:String, required:true},
     date:{type:String, default:Date}
 });
