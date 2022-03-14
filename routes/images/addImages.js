@@ -3,7 +3,7 @@ const images = require("../../model/imagesGallery");
 const router = express.Router();
 const Joi = require('joi');
 const multer = require("multer");
-const bcrypt = require("bcrypt");
+
  
 var storage =   multer.diskStorage({
   destination: function (req, file, callback) {
@@ -31,8 +31,8 @@ router.post("/api/image/add",  upload.single('ImageLink'), async(req, res, next)
 
   //console.log("rewbody", req.body);
 
-const oringnalFileName= Date.now()+'.'+req.file.originalname;
-console.log("filesname", req.file.originalname);
+const oringnalFileName = req.file.filename;
+
   const response = validateUser(req.body);
   //console.log("errorMessage", response.details);
   //res.json({"response" : response.error});
