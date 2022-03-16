@@ -2,6 +2,7 @@ const Joi = require('joi');
 const mongoose = require("mongoose");
 const users = require("../model/user");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 //User Register conroller
 const userRegister = async(req, res)=>{
@@ -75,9 +76,19 @@ const userLogin =  async(req, res)=>{
     
             const match = await bcrypt.compare(req.body.password, findUserByEmail.password);
     
+            console.log("match", match);
+
+            
+
             if(match) {
+
     
-                res.status(202).json({"response": true, "Message" : "User login sucessfully"});
+                  //console.log("findUserByEmail", findUserByEmail);
+                  const token = jwt.sign({ data: findUserByEmail.email }, 'secret', { expiresIn: '1h' });
+                
+                  console.log("token", token);
+
+                res.status(202).json({"response": true, "Message" : "User login sucessfully",jwtoken:token}).setHeader("token",token);;
                 //login
             }else{
     
