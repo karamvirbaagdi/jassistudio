@@ -1,7 +1,9 @@
 # jassistudio
 
 http://localhost:5000/api/image/list
+
 http://localhost:5000/api/image/add/
+
 http://localhost:5000/api/image/delete/6226494d5274c47c106b5baa
 
 
