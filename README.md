@@ -22,7 +22,7 @@ http://localhost:5000/api/user/login
 M:post
 {
 	
-"userName":"raja@gmail.com",
+"email":"raja@gmail.com",
     "password":"raja@123"
  
 }
