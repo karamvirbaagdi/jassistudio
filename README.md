@@ -8,6 +8,7 @@ http://localhost:5000/api/image/delete/6226494d5274c47c106b5baa
 
 
 http://localhost:5000/api/user/register/
+
 m:: Post
 {
 	 "userName" : "Raj Kumar",
@@ -17,6 +18,7 @@ m:: Post
 }
 
 http://localhost:5000/api/user/login
+
 M:post
 {
 	
@@ -27,6 +29,7 @@ M:post
 
 User Api 
 http://localhost:5000/api/user/register/
+
 Mthod :: Post
 {
 	 "userName" : "Raj",
@@ -36,6 +39,7 @@ Mthod :: Post
 }
 
 http://localhost:5000/api/user/login/
+
 Mthod :: Post
 {
 "email" : "raja@gmail.com",
@@ -44,9 +48,11 @@ Mthod :: Post
 }
 
 http://localhost:5000/api/user/alluser/
+
 Mthod :: Post
 
 http://localhost:5000/api/video/add
+
 {
 
 "videoTitle": "videoTitle",
@@ -55,10 +61,13 @@ http://localhost:5000/api/video/add
 }
 
 http://localhost:5000/api/video/list
+
 m:: Post
 
 http://localhost:5000/api/video/delete/622f7f61edf3a81ab644b59b
+
 m:: Post
 
 http://localhost:5000/api/image/list/
+
 m :post
